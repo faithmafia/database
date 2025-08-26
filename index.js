@@ -19,7 +19,7 @@ window.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
 // Logout
 logoutBtn.onclick = async () => {
     await supabase.auth.signOut();
-    window.location.href = "login.html";
+    window.location.href = "index.html";
 };
 
 // Load table

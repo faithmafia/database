@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faith Mafia Database</title>
+    <style>
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            color: #66fcf1;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* Buttons */
+        .top-buttons {
+            text-align: right;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            background-color: #1f2833;
+            color: #66fcf1;
+            border: 1px solid #45a29e;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #45a29e;
+            color: #0b0c10;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            background-color: #1f2833;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #45a29e;
+            text-align: left;
+        }
+
+        th {
+            background-color: #45a29e;
+            color: #0b0c10;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        tr:nth-child(even) { background-color: #0b0c10; }
+        tr:nth-child(odd) { background-color: #1c1c1c; }
+        tr:hover { background-color: #66fcf1; color: #0b0c10; transition: 0.2s; }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .modal-content {
+            background-color: #1f2833;
+            margin: 10% auto;
+            padding: 2rem;
+            border: 1px solid #45a29e;
+            width: 400px;
+            border-radius: 8px;
+            color: #c5c6c7;
+            position: relative;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+            border: 1px solid #45a29e;
+            background-color: #0b0c10;
+            color: #c5c6c7;
+        }
+
+        .modal-content button {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .close {
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+            color: #66fcf1;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>Faith Mafia Database</h1>
+<div class="top-buttons">
+    <button id="logoutBtn">LOGOUT</button>
+    <button id="addBtn">ADD</button>
+</div>
+
+<table id="people-table">
+    <tr><td>Loading...</td></tr>
+</table>
+
+<!-- Modal for adding person -->
+<div id="addModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Add New Person</h2>
+        <input type="text" id="full_name" placeholder="Full Name" required>
+        <input type="text" id="relation" placeholder="Relation">
+        <input type="date" id="birthday" placeholder="Birthday">
+        <input type="email" id="email" placeholder="Email">
+        <input type="text" id="phone" placeholder="Phone">
+        <input type="text" id="notes" placeholder="Notes">
+        <button id="savePerson">Save</button>
+    </div>
+</div>
+
+<script type="module" src="index.js"></script>
+<script>
+    // Modal logic
+    const addBtn = document.getElementById('addBtn');
+    const modal = document.getElementById('addModal');
+    const closeBtn = modal.querySelector('.close');
+
+    addBtn.onclick = () => modal.style.display = 'block';
+    closeBtn.onclick = () => modal.style.display = 'none';
+    window.onclick = e => { if (e.target == modal) modal.style.display = 'none'; }
+</script>
+</body>
+</html>

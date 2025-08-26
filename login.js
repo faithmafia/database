@@ -26,7 +26,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
         messageEl.style.color = "green";
         messageEl.textContent = "✅ Login successful! Redirecting...";
         setTimeout(() => {
-            window.location.href = "index.html"; // change to your dashboard/homepage
+            window.location.href = "db.html"; // change to your dashboard/homepage
         }, 1000);
     }
 });
